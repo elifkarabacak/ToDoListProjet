@@ -1,0 +1,14 @@
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/appsettings.Development.json
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/appsettings.json
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/ToDoApp.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/ToDoApp.deps.json
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/ToDoApp.runtimeconfig.json
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/ToDoApp.pdb
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Couchbase.Extensions.DependencyInjection.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Couchbase.NetClient.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Microsoft.OpenApi.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Newtonsoft.Json.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/OpenTracing.Signed.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Swashbuckle.AspNetCore.Swagger.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Swashbuckle.AspNetCore.SwaggerGen.dll
+/Users/elifkarabacak/Projects/ToDoApp/ToDoApp/App/Swashbuckle.AspNetCore.SwaggerUI.dll

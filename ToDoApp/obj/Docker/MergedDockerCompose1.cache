@@ -1,0 +1,56 @@
+services:
+  todo.test:
+    build:
+      context: /Users/elifkarabacak/Projects/ToDoApp
+      dockerfile: Todo.Test/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: Todo.Test
+      target: base
+    container_name: Todo.Test
+    entrypoint: tail -f /dev/null
+    environment:
+      NUGET_FALLBACK_PACKAGES: ''
+    image: todo:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/netcoreapp3.1/Todo.Test.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    tty: true
+    volumes:
+    - /Users/elifkarabacak/Projects/ToDoApp/Todo.Test:/app:rw
+    - /Users/elifkarabacak/vsdbg/vs2017u5:/remote_debugger:rw
+    - /Users/elifkarabacak/.nuget/packages:/root/.nuget/packages:ro
+  todowebui:
+    build:
+      context: /Users/elifkarabacak/Projects/ToDoApp
+      dockerfile: TodoWebUI/Dockerfile
+      labels:
+        com.microsoft.created-by: visual-studio
+        com.microsoft.visual-studio.project-name: TodoWebUI
+      target: base
+    container_name: TodoWebUI
+    entrypoint: tail -f /dev/null
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+      ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS: "true"
+      DOTNET_USE_POLLING_FILE_WATCHER: '1'
+      NUGET_FALLBACK_PACKAGES: ''
+    image: todowebui:dev
+    labels:
+      com.microsoft.visualstudio.debuggee.arguments: ' --additionalProbingPath /root/.nuget/packages  "/app/bin/Debug/netcoreapp3.1/TodoWebUI.dll"'
+      com.microsoft.visualstudio.debuggee.killprogram: /bin/sh -c "if PID=$$(pidof
+        dotnet); then kill $$PID; fi"
+      com.microsoft.visualstudio.debuggee.program: dotnet
+      com.microsoft.visualstudio.debuggee.workingdirectory: /app
+    ports:
+    - target: 80
+    tty: true
+    volumes:
+    - /Users/elifkarabacak/Projects/ToDoApp/TodoWebUI:/app:rw
+    - /Users/elifkarabacak/vsdbg/vs2017u5:/remote_debugger:rw
+    - /Users/elifkarabacak/.nuget/packages:/root/.nuget/packages:ro
+    - /Users/elifkarabacak/Projects/ToDoApp:/src:rw
+version: '3.4'

@@ -1,0 +1,10 @@
+{
+  "version": 2,
+  "dgSpecHash": "Q1QaajDFgG+GtpzEYrH1P7aGpU2md98z4crG/hYFL6LpCXUKTYA4lZw2ex1IhhxDHqIG/pzuGmPdt36v8Pno3Q==",
+  "success": true,
+  "projectFilePath": "/Users/elifkarabacak/Projects/ToDoApp/TodoWebUI/TodoWebUI.csproj",
+  "expectedPackageFiles": [
+    "/Users/elifkarabacak/.nuget/packages/newtonsoft.json/13.0.1/newtonsoft.json.13.0.1.nupkg.sha512"
+  ],
+  "logs": []
+}

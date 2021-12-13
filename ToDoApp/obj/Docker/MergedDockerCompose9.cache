@@ -1,0 +1,21 @@
+services:
+  todo.test:
+    build:
+      context: /Users/elifkarabacak/Projects/ToDoApp
+      dockerfile: Todo.Test/Dockerfile
+    image: todo
+  todoapp:
+    build:
+      context: /Users/elifkarabacak/Projects/ToDoApp
+      dockerfile: ToDoApp/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: todoapp
+  todowebui:
+    build:
+      context: /Users/elifkarabacak/Projects/ToDoApp
+      dockerfile: TodoWebUI/Dockerfile
+    environment:
+      ASPNETCORE_ENVIRONMENT: Development
+    image: todowebui
+version: '3.4'

@@ -1,0 +1,155 @@
+﻿@model IEnumerable<TodoWebUI.Models.TodoItemView>
+
+@{ ViewBag.Title = "To Do List";
+}
+
+<script>function calc(id) {
+    var isComplated = false;
+        if (document.getElementById('check_' + id).checked) {
+            document.getElementById(id).style.textDecoration = " line-through";
+
+            isComplated = true;
+        } else {
+            document.getElementById(id).style.textDecoration = "none";
+            isComplated = false;
+        }
+        $.ajax({
+            url: '/Home/EdtComplated',
+            type: 'PATCH',
+            dataType: 'json',
+            data: { id: id, isComplated: isComplated },
+            success: function (response) {
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+    }
+
+    function deleteitem(id) {
+
+        $.ajax({
+            url: '/Home/Delete',
+            type: 'DELETE',
+            dataType: 'json',
+            data: { id: id },
+            success: function (response) {
+                $("body").html(result);
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+
+
+    }
+    function myFunction(id) {
+        var temp = document.getElementById(id);
+        temp.contentEditable = true;
+
+    }
+    function additem(ele) {
+        if (event.key === 'Enter') {
+            $.ajax({
+                url: '/Home/Add',
+                type: 'POST',
+                dataType: 'json',
+                data: { title: ele.value },
+                success: function (response) {
+                    $("body").html(result);
+                },
+                error: function (jqXHR, textStatus, errorThrown) {
+                    console.log(textStatus, errorThrown);
+                }
+            });
+        }
+
+    }
+
+    function outfunc(id) {
+
+        var temp = document.getElementById(id);
+        temp.contentEditable = false;
+
+        event.stopPropagation();
+        $.ajax({
+            url: '/Home/Edit',
+            type: 'PATCH',
+            dataType: 'json',
+            data: { id: id, title: temp.innerText },
+            success: function (response) {
+
+
+            },
+            error: function (jqXHR, textStatus, errorThrown) {
+                console.log(textStatus, errorThrown);
+            }
+        });
+
+    }
+</script>
+@using (Html.BeginForm("", "", FormMethod.Post))
+{
+    <Section>
+        <div class="panel panel-default todo-panel">
+
+
+
+
+            <table class="table table-hover">
+                <thead>
+                    <tr>
+                        <td>&#x2714;</td>
+                        <td></td>
+
+                    </tr>
+                </thead>
+                <thead>
+                    <tr>
+                        <td></td>
+                        <td>   <input onkeydown="additem(this)" id="additemid" type="text"></td>
+
+                    </tr>
+                </thead>
+
+
+                <tbody>
+                    @foreach (var Item in Model)
+                    {
+                        
+                        <tr>
+                            <td>
+                                @if (@Item.Completed == true) { 
+                                    <input onclick="calc('@Item.Id')" checked="checked" id="check_@Item.Id" type="checkbox"  class="done-checkbox">
+                                }
+                                else { 
+                                    <input onclick="calc('@Item.Id')" id="check_@Item.Id" type="checkbox"  class="done-checkbox">
+                                } </td>
+                            <td>
+                                @if (@Item.Completed == true)
+                                {
+                                    <p contenteditable="false" onblur="@Item.Id" id="@Item.Id" style="text-decoration:line-through" ondblclick="@Item.Id">@Html.DisplayFor(modelitems => Item.Title)</p>
+                                }
+                                else
+                                { <p contenteditable="false" onblur="@Item.Id" id="@Item.Id" ondblclick="@Item.Id">@Html.DisplayFor(modelitems => Item.Title)</p>
+                            }
+                            </td>
+                            <td>
+                            </td>
+
+                        </tr>
+                                }
+                <tbody>
+
+            </table>
+
+            <div class="panel-footer add-item-form">
+                <!-- TODO: Add item form -->
+            </div>
+        </div>
+
+
+
+    </Section>}

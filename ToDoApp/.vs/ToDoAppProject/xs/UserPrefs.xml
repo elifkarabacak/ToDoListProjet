@@ -1,0 +1,51 @@
+﻿<Properties StartupConfiguration="{077A46B9-A9AA-4000-91EB-70CB1AA84CD9}|Default">
+  <MonoDevelop.Ide.ItemProperties.TodoWebUI PreferredExecutionTarget="/Applications/Firefox.app" />
+  <MonoDevelop.Ide.Workbench ActiveDocument="TodoWebUI/Dockerfile">
+    <Files>
+      <File FileName="ToDoApp/Dockerfile" Line="1" Column="1" />
+      <File FileName="ToDoApp/publish/appsettings.json" Line="1" Column="1" />
+      <File FileName="ToDoApp/Properties/launchSettings.json" Line="21" Column="1" />
+      <File FileName="ToDoApp/Startup.cs" Line="39" Column="1" />
+      <File FileName="TodoWebUI/Dockerfile" Line="9" Column="32" />
+      <File FileName="TodoWebUI/appsettings.json" Line="1" Column="1" />
+    </Files>
+    <Pads>
+      <Pad Id="ProjectPad">
+        <State name="__root__">
+          <Node name="ToDoAppProject" expanded="True">
+            <Node name="ToDoApp" expanded="True">
+              <Node name="publish" expanded="True" />
+            </Node>
+            <Node name="TodoWebUI" expanded="True">
+              <Node name="Dockerfile" selected="True" />
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+      <Pad Id="MonoDevelop.UnitTesting.TestPad">
+        <State name="__root__">
+          <Node name="ToDoAppProject" expanded="True">
+            <Node name="Todo.Test" expanded="True">
+              <Node name="Todo.Test" expanded="True">
+                <Node name="TodoRepository" expanded="True" selected="True" />
+              </Node>
+            </Node>
+          </Node>
+        </State>
+      </Pad>
+    </Pads>
+  </MonoDevelop.Ide.Workbench>
+  <MonoDevelop.Ide.ItemProperties.Todo.Test PreferredExecutionTarget="MonoDevelop.Default" />
+  <MonoDevelop.Ide.DebuggingService.PinnedWatches />
+  <MonoDevelop.Ide.ItemProperties.ToDoApp PreferredExecutionTarget="/Applications/Google Chrome.app" />
+  <MonoDevelop.Ide.Workspace ActiveConfiguration="Debug" />
+  <Debugger.DebugSourceFolders>
+    <String>/Users/elifkarabacak/Library/Caches/VisualStudio/8.0/Symbols/moq/moq4/fc484fb85a28e8cd5d5c51c7e158df2ecc72621d</String>
+  </Debugger.DebugSourceFolders>
+  <MonoDevelop.Ide.DebuggingService.Breakpoints>
+    <BreakpointStore>
+      <Breakpoint file="/Users/elifkarabacak/Projects/ToDoApp/Todo.Test/UnitTest1.cs" relfile="Todo.Test/UnitTest1.cs" line="10" column="1" />
+    </BreakpointStore>
+  </MonoDevelop.Ide.DebuggingService.Breakpoints>
+  <MultiItemStartupConfigurations />
+</Properties>

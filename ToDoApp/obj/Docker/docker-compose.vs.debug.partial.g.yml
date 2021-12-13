@@ -1,0 +1,75 @@
+version: '3.4'
+
+services:
+  todo.test:
+    image: todo:dev
+    container_name: Todo.Test
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "Todo.Test"
+    environment:
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - /Users/elifkarabacak/Projects/ToDoApp/Todo.Test:/app
+      - /Users/elifkarabacak/vsdbg/vs2017u5:/remote_debugger:rw
+      - /Users/elifkarabacak/.nuget/packages/:/root/.nuget/packages:ro
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/Todo.Test.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+  todoapp:
+    image: todoapp:dev
+    container_name: ToDoApp
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "ToDoApp"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - /Users/elifkarabacak/Projects/ToDoApp/ToDoApp:/app
+      - /Users/elifkarabacak/Projects/ToDoApp:/src
+      - /Users/elifkarabacak/vsdbg/vs2017u5:/remote_debugger:rw
+      - /Users/elifkarabacak/.nuget/packages/:/root/.nuget/packages:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/ToDoApp.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
+
+  todowebui:
+    image: todowebui:dev
+    container_name: TodoWebUI
+    build:
+      target: base
+      labels:
+        com.microsoft.created-by: "visual-studio"
+        com.microsoft.visual-studio.project-name: "TodoWebUI"
+    environment:
+      - DOTNET_USE_POLLING_FILE_WATCHER=1
+      - ASPNETCORE_LOGGING__CONSOLE__DISABLECOLORS=true
+      - NUGET_FALLBACK_PACKAGES=
+    volumes:
+      - /Users/elifkarabacak/Projects/ToDoApp/TodoWebUI:/app
+      - /Users/elifkarabacak/Projects/ToDoApp:/src
+      - /Users/elifkarabacak/vsdbg/vs2017u5:/remote_debugger:rw
+      - /Users/elifkarabacak/.nuget/packages/:/root/.nuget/packages:ro
+
+    entrypoint: tail -f /dev/null
+    labels:
+      com.microsoft.visualstudio.debuggee.program: "dotnet"
+      com.microsoft.visualstudio.debuggee.arguments: " --additionalProbingPath /root/.nuget/packages  \"/app/bin/Debug/netcoreapp3.1/TodoWebUI.dll\""
+      com.microsoft.visualstudio.debuggee.workingdirectory: "/app"
+      com.microsoft.visualstudio.debuggee.killprogram: "/bin/sh -c \"if PID=$$(pidof dotnet); then kill $$PID; fi\""
+    tty: true
